@@ -1,0 +1,58 @@
+.register-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: auto;
+    background-color: rgb(34, 34, 34);
+}
+.register-card{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    height: 85vh;
+    width: 160vh;
+    border-radius: 3vh;
+}
+.google-Img{
+    width: 60px;
+}
+.left-part{
+    flex: 1;
+    padding: 30px;
+    padding-right: 20px;
+    text-align: column;  
+}
+.register-heading{
+    color: #ffffff;
+    font-family: roboto;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.right-part{ 
+flex: 1;
+padding-right: 20px;
+padding-top: 50px;
+text-align: column;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+mat-form-field{
+    width: 50vh;
+    height: 10vh;
+    background-color:black !important;
+}
+mat-label{
+    color: #ffffffd8;
+}
+.date-fromate-color{
+    color: #ffffff;
+}
+.reg-btn{
+    display: flex;
+    justify-content: flex-end;
+}

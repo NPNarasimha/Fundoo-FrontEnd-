@@ -1,0 +1,97 @@
+.login-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: auto;
+    background-color: rgb(34, 34, 34);
+   
+}
+.login-Card{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    height: 60vh;
+    width: 160vh;
+    border-radius: 3vh;
+    
+}
+.left-Part{
+    flex: 1;
+    padding: 30px;
+    padding-right: 20px;
+    text-align: column;   
+}
+
+.sign-Heading{
+    color: #ffffff;
+    font-family: roboto;
+    font-weight: 400;
+    margin-bottom: 10px;
+        
+}
+.google-Img{
+    width: 60px;
+}
+.sign-Para{
+    color: #ffffff;
+    font-family: roboto;
+    font-size: 18px;
+}
+.right-Part{
+    flex: 1;
+    padding-right: 20px;
+    padding-top: 50px;
+    text-align: column;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+mat-form-field{
+    width: 50vh;
+}
+mat-label{
+    color: #ffffffd8;
+}
+.info-para{
+    color: #ffffffac;
+    font-family: Roboto;
+    font-size: 15px;
+    margin-bottom: 60px;
+}
+.card-text-btn{
+color: #85b9f1 !important;
+}
+.btn{
+    color: black !important;
+    font-family: roboto !important;
+background-color: #85b9f1 !important;
+} 
+.anchor-tag{
+    text-decoration: none;
+    color: #85b9f1;
+    font-size: 16px;
+}
+.anchor-tag:hover{
+    text-decoration: underline;
+}
+
+.btn-Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 40px;
+}
+.text-btn{
+color: #ffffff !important;
+}
+.help-Container{
+    display: flex;
+    justify-content: flex-end;
+    width: 160vh;
+    margin-top: 20px;
+}
+
