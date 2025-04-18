@@ -5,15 +5,23 @@
             <h1 class="sign-Heading">Sign in</h1>
             <p class="sign-Para">with your Google Account. This account will be available to other Google apps in the browser.</p>
         </div>
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
         <div class="right-Part">
             <div class="form-group">
                 <mat-form-field appearance="outline">
                     <mat-label>Email or Phone</mat-label>
                     <input matInput placeholder="Email or Phone" formControlName="email">
+                <mat-error *ngIf="LoginForm.get('email')?.touched &&LoginForm.get('email')?.hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="LoginForm.get('email')?.hasError('email') && !LoginForm.get('email')?.hasError('required')">
+                Please enter a valid email</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
                     <input matInput placeholder="Password" type="password" formControlName="password">
+                    <mat-error *ngIf="LoginForm.get('password')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="LoginForm.get('password')?.hasError('minlength')">
+                      Minimum 6 characters required
+                    </mat-error>
                 </mat-form-field>
             </div>
             <button mat-button class="card-text-btn">Forgot email?</button>
@@ -23,10 +31,11 @@
               </p>
               <div class="btn-Container">
                 <button mat-button class="card-text-btn">Create account</button>
-                <button mat-flat-button class="btn">Next</button>
+                <button type="submit" [disabled]="!LoginForm.valid" mat-flat-button class="btn">Next</button>
             </div> 
         </div>
-    </div>
+    </form>
+</div>
     <div class="help-Container">
         <a mat-button href="https://support.google.com/accounts?hl=en&visit_id=638804667152578830-3450883648&rd=2&p=account_iph#topic=3382296" target="_blank" rel="noopener" class="text-btn">Help</a>
         <a mat-button href="https://policies.google.com/privacy?gl=IN&hl=en-US" target="_blank" rel="noopener" class="text-btn">Privacy</a>

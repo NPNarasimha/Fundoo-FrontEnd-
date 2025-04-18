@@ -4,44 +4,60 @@
             <img src="images/Google_Icon.png"alt="Google Logo" class="google-Img">
             <h1 class="register-heading">Create a Account</h1>
         </div>
-        <div class="right-part">
-            <div class="form-group">
+        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+            <div class="right-part">
+                <div class="form-group">
                 <mat-form-field appearance="outline">
                     <mat-label>First Name</mat-label>
                     <input matInput placeholder="First Name" type="text" formControlName="firstName">
-                </mat-form-field>
-                <mat-form-field appearance="outline">
+                    <mat-error *ngIf="RegisterForm.get('firstName')?.touched && RegisterForm.get('firstName')?.hasError('required')">
+                        First Name is required
+                      </mat-error>
+                      <mat-error *ngIf="RegisterForm.get('firstName')?.hasError('minlength')">
+                        Minimum 2 letters
+                      </mat-error></mat-form-field>
+                <mat-form-field appearance="outline" class="mat-form">
                     <mat-label>Last Name</mat-label>
                     <input matInput placeholder="Last Name" type="text" formControlName="lastname">
                 </mat-form-field>
-                <mat-form-field class="date-label">
+                <mat-form-field appearance="outline" class="mat-form">
                     <mat-label>Choose a date</mat-label>
-                    <input  matInput [matDatepicker]="picker">
+                    <input  matInput [matDatepicker]="picker" formControlName="DOB">
                     <mat-hint class="date-fromate-color">MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker ></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field>
+                    <mat-error *ngIf="RegisterForm.get('DOB')?.touched && RegisterForm.get('DOB')?.hasError('required')">DOB is required</mat-error>
+                </mat-form-field>
+                  <mat-form-field appearance="outline" class="mat-form">
                     <mat-label>Gender</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="gender">
                       <mat-option value="male">Male</mat-option>
                       <mat-option value="femail">Female</mat-option>
                       <mat-option value="none">None</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="RegisterForm.get('gender')?.touched && RegisterForm.get('gender')?.hasError('required')">required</mat-error>  
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="mat-form">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="RegisterForm.get('email')?.touched && RegisterForm.get('email')?.hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="RegisterForm.get('email')?.hasError('email') && !RegisterForm.get('email')?.hasError('required')">
+                Please enter a valid email</mat-error>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="mat-form">
                     <mat-label>Password</mat-label>
                     <input matInput placeholder="Password" type="password" formControlName="password">
+                    <mat-error *ngIf="RegisterForm.get('password')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="RegisterForm.get('password')?.hasError('minlength')">
+                      Minimum 6 characters required
+                    </mat-error>
                 </mat-form-field>
                 <div class="reg-btn">
-                    <button mat-flat-button color="primary">Register</button>
+                    <button type="submit"  mat-flat-button >Register</button>
+                </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>

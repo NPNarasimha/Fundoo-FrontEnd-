@@ -14,6 +14,7 @@
     background-color: black;
     height: 60vh;
     width: 160vh;
+    margin: 20px;
     border-radius: 3vh;
     
 }
@@ -95,3 +96,74 @@ color: #ffffff !important;
     margin-top: 20px;
 }
 
+@media screen and (max-width: 1200px) {
+    .login-Card {
+        width: 120vh;
+    }
+
+    mat-form-field {
+        width: 45vh;
+    }
+    .help-Container{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .login-Container {
+        height: 120vh;
+        padding-top: 10px;
+    }
+    .login-Card {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        width: 90vw;
+        padding: 20px 10px;
+    }
+
+    .left-part, .right-part {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .google-Img {
+        display: block;
+        margin: 0 auto 20px ; 
+        width: 50px; 
+    }
+
+    mat-form-field {
+        width: 80vw;
+    }
+
+    .help-Container{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .login-Container {
+        height: 110vh;
+        padding: 10px;
+    }
+
+    .login-Card {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    mat-form-field {
+        width: 90vw;
+    }
+
+    .google-Img {
+        width: 40px;
+        justify-content: center;
+    }
+
+    .sign-Heading {
+        font-size: 20px;
+    }
+}

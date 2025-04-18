@@ -14,7 +14,9 @@
     height: 85vh;
     width: 160vh;
     border-radius: 3vh;
+   
 }
+
 .google-Img{
     width: 60px;
 }
@@ -55,4 +57,73 @@ mat-label{
 .reg-btn{
     display: flex;
     justify-content: flex-end;
+}
+
+::ng-deep .mat-form .mat-mdc-text-field-wrapper.mdc-text-field--filled {
+    background-color: black; 
+  }
+  
+
+@media screen and (max-width: 1200px) {
+    .register-card {
+        width: 120vh;
+    }
+
+    mat-form-field {
+        width: 45vh;
+    }
+}
+@media screen and (max-width: 900px) {
+    .register-Container{
+        height: auto;
+        padding: 10px;
+    }
+    .register-card {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        width: 90vw;
+        padding: 20px 10px;
+    }
+
+    .left-part, .right-part {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .google-Img {
+        margin-bottom: 20px;
+    }
+
+    mat-form-field {
+        width: 80vw;
+    }
+
+    .reg-btn {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .register-Container {
+        padding: 10px;
+    }
+
+    .register-card {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    mat-form-field {
+        width: 90vw;
+    }
+
+    .google-Img {
+        width: 40px;
+    }
+
+    .register-heading {
+        font-size: 20px;
+    }
 }
