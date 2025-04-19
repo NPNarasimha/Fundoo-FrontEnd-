@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/users/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { UserService } from '../../services/users/user.service';
 })
 export class LoginComponent implements OnInit {
    LoginForm!: FormGroup;
-    constructor(private user:UserService){}
+    constructor(private user:UserService, private snackBar: MatSnackBar){}
   ngOnInit(): void {
   this.LoginForm=new FormGroup({
     email:new FormControl('',[Validators.required, Validators.email]),
@@ -21,22 +22,35 @@ export class LoginComponent implements OnInit {
     if (this.LoginForm.valid) {
       console.log('Login Successful', this.LoginForm.value);
       //const userData=this.LoginForm.value;
-      //localStorage.setItem('userData', JSON.stringify(userData));
+      //localStorage.setItem('token', JSON.stringify(userData.Data));
       const payload = {
         email:this.LoginForm.value.email,
         password:this.LoginForm.value.password
       };
       this.user.login(payload).subscribe({
-        next:(result)=>{
-          console.log(result);
+        next:(result:any)=>{
+          console.log(result.message);
+          localStorage.setItem("Token",result.data)
+          this.snackBar.open("Login Success","close",{
+            duration:3000,
+            //this is used for adding css to snack bar
+            //panelClass:["SnackBar-success"]
+          })
         },
         error:(err)=>{
           console.log(err);
+          this.snackBar.open('Login unsuccessful. Please try again.', 'Close', {
+            duration: 3000,
+            //panelClass: ['snackbar-error']
+          });
         }
       });
     }
     else{
-      console.log("Fill all the field Correct");
+      this.snackBar.open('Please fill all fields correctly.', 'Close', {
+        duration: 3000,
+        //panelClass: ['snackbar-error']
+      });
     }
   }
 }
