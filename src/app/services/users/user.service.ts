@@ -12,4 +12,7 @@ export class UserService {
   register(payload:any){
     return this.Http.postApi("/register",payload)
   }
+  login(payload:any){
+    return this.Http.postApi("/login",payload)
+  }
 }
