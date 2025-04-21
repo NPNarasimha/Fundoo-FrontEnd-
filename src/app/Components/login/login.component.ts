@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/users/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
    LoginForm!: FormGroup;
-    constructor(private user:UserService, private snackBar: MatSnackBar){}
+    constructor(private user:UserService, private snackBar: MatSnackBar,private router:Router){}
   ngOnInit(): void {
   this.LoginForm=new FormGroup({
     email:new FormControl('',[Validators.required, Validators.email]),
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
         next:(result:any)=>{
           console.log(result.message);
           localStorage.setItem("Token",result.data)
+          this.router.navigate(['dashboard'])
           this.snackBar.open("Login Success","close",{
             duration:3000,
             //this is used for adding css to snack bar

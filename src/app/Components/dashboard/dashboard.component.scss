@@ -1,0 +1,149 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 10px 4px 8px rgba(5, 5, 5, 0.1);
+}
+
+.toolbar {
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.keep-img {
+  width: 40px;
+  height: 40px;
+  padding-right: 10px;
+  padding-left: 15px;
+}
+
+.keep-text {
+  font-size: 20px;
+  font-weight: normal;
+  color: #5f6368;
+}
+
+.toolbar-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.toolbar-center mat-form-field {
+  width: 100%;
+  max-width: 450px;
+  height: 48px;
+  padding: 0 10px;
+  margin-bottom: 4px;
+  border: 20px;
+}
+
+.search-img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0);
+  opacity: 0.7;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+.search-icon{
+ display: none;
+}
+
+.icon,.sidenav-icon,
+.search-img {
+  filter: brightness(0);
+}
+
+.profile-icon {
+  height: 27px;
+  width: 27px;
+  filter: brightness(0.5);
+}
+
+.icon-container {
+  margin-left: 10px;
+}
+.toolbar-actions {
+  align-items: center;
+  gap: 10px;
+}
+
+.sidenav-container {
+  height:90vh;
+}
+
+.sidenav {
+ width: 70px;
+  &:hover {
+    width: 250px;
+    background-color:#ffffff;
+    box-shadow: #0a0b0b;
+  }
+}
+.sidenav.open {
+  width: 250px;
+}
+.sidenav-item {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 25px;
+  width: 100%; 
+  white-space: nowrap;  
+  transition: background-color 0.2s;
+}
+.sidenav-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 40px;  
+}
+.sidenav-text {
+  font-family: roboto;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0;
+}
+.sidenav-item.active {
+  background-color: #f4e7a3;
+ 
+}
+.sidenav:hover .sidenav-text,
+.sidenav.open .sidenav-text {
+  opacity: 1;
+}
+.toolbar-actions-container{
+  display: flex;
+  flex-direction: row;
+}
+@media screen and (max-width: 617px){
+  .toolbar-center{
+    display: none;
+  }
+  .search-icon{
+    display: inline;
+    width: 20px;
+    height: 20px;
+    filter: brightness(0);
+  }
+  .dashboard-container {
+    width: 110vh;
+  }
+  
+ 
+}
+
