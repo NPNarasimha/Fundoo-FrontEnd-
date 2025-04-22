@@ -18,13 +18,19 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
+import { CreatenoteComponent } from './Components/createnote/createnote.component';
+import { IconsComponent } from './Components/icons/icons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ForgetPasswordComponent,
+    CreatenoteComponent,
+    IconsComponent
   ],
   imports: [
     BrowserModule,

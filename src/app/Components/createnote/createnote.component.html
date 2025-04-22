@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="note-container" [class.expanded]="noteshow">
+    <form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+      
+      <div class="title-section" *ngIf="!noteshow" (click)="opennote()">
+        <input placeholder="Take a note..." formControlName="title" class="title-input" />
+        <div class="tittle-img-container">
+          <button><img src="images/check_box.png" alt="Checkbox Icon" class="checkboxIcon" /></button> 
+          <button><img src="images/paint_bresh.png" alt="Brush Icon" class="checkboxIcon" /></button> 
+          <button><img src="images/img_frame.png" alt="Image Icon" class="checkboxIcon" /></button>   
+        </div>
+      </div>
+
+      <div *ngIf="noteshow">
+        <div class="title-section">
+          <input placeholder="Title" class="title-input" formControlName="title" />
+          <button><img src="images/pin.png" alt="Pin Icon" class="pin-img" /></button>
+        </div> 
+        
+        <textarea placeholder="Description" class="description" formControlName="description"></textarea>
+
+        <div class="noteActions">
+          <app-icons></app-icons>
+          <div class="closeButtonWrapper">
+            <button mat-button class="closebutton" type="button" (click)="closeNote()">Close</button>
+            <button mat-button color="primary" type="submit">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <router-outlet></router-outlet>
+</div>

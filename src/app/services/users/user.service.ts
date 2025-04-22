@@ -15,4 +15,7 @@ export class UserService {
   login(payload:any){
     return this.Http.postApi("/login",payload)
   }
+  ForgetPassword(payload:any){
+    return this.Http.postApi("/forgotpass",payload)
+  }
 }
