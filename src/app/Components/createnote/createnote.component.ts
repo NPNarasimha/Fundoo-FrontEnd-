@@ -39,6 +39,9 @@ export class CreatenoteComponent implements OnInit {
   opennote(): void {
     this.noteshow = true;
   }
+onNoteColorSelected(event: { color: string }): void {
+    this.notesForm.get('color')?.setValue(event.color);
+  }
 
   onSubmit(): void {
     this.submitted=true;
@@ -55,7 +58,7 @@ export class CreatenoteComponent implements OnInit {
         next: (result: any) => {
           console.log(result.message);
           this.snackBar.open('Notes created successfully!', 'Close', { duration: 3000 });
-          this.notesForm.reset();
+          this.notesForm.reset({ color: '#ffffff', isPin: false });
           this.noteshow = false;
         },
         error: (err) => {
@@ -66,7 +69,7 @@ export class CreatenoteComponent implements OnInit {
 
     } else {
       this.noteshow = false;
-      this.notesForm.reset();
+      this.notesForm.reset({ color: '#ffffff', isPin: false });
       this.snackBar.open('Please fill all fields correctly.', 'Close', { duration: 3000 });
     }
   }

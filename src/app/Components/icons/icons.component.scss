@@ -33,4 +33,28 @@ button {
       filter: brightness(0);
     }
   }
+  .color-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 1000;
+  }
+  
+  .color-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .color-circle:hover {
+    transform: scale(1.2);
+  }
   

@@ -1,8 +1,22 @@
 <div class="icon-container">
     <div>
-        <button>
-            <img src="images/pallete.png" alt="paint-img" class="icons">
-        </button>
+        
+        <button mat-icon-button (click)="toggleColorPicker($event)">
+            <mat-icon>palette</mat-icon>
+          </button>
+          <div *ngIf="isColorPickerVisible" class="color-picker">
+            <div
+              class="color-circle"
+              *ngFor="let color of colors"
+              [ngStyle]="{ 'background-color': color }"
+              (click)="selectColor(color)">
+            </div>
+          </div>
+
+
+
+
+
         <button>
             <img src="images/add_alert.png" alt="add_alert" class="icons">
         </button>

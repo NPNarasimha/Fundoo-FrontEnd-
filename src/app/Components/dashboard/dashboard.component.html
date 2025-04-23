@@ -7,15 +7,16 @@
       <img src="images/keep_image.png" alt="keep image" class="keep-img">
       <span class="keep-text">Keep</span>
     </div>
+
     <div class="toolbar-center">
       <mat-form-field appearance="outline">
-        
         <img matPrefix src="images/search_bar.png" class="search-img" alt="Search">
         <input matInput placeholder="Search">
       </mat-form-field>
-      
     </div>
-    <img  src="images/search_bar.png" class="search-icon" alt="Search">
+
+    <img src="images/search_bar.png" class="search-icon" alt="Search">
+
     <div class="toolbar-actions-container">
       <div class="toolbar-actions">
         <button mat-icon-button>
@@ -28,14 +29,25 @@
           <img src="images/settings.png" class="icon" alt="Settings">
         </button>
       </div>
-        <div class="icon-container">
-          <button mat-icon-button>
-            <img src="images/apps.png" class="icon" alt="Apps">
-          </button>
-          <img src="images/profile.png" class="profile-icon" alt="User profile">
-        </div>
+
+      <div class="icon-container">
+        <button mat-icon-button>
+          <img src="images/apps.png" class="icon" alt="Apps">
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="actMenu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-toolbar>
+
+  
+  <mat-menu #actMenu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav
@@ -43,42 +55,37 @@
       class="sidenav"
       mode="side"
       [opened]="true">
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'notes'"
-      (click)="setActive('notes')">
+      <!-- Sidenav buttons... -->
+      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'notes'" (click)="setActive('notes')">
         <img src="images/lightbulb.png" class="sidenav-icon" alt="Notes">
         <span class="sidenav-text">Notes</span>
       </button>
 
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'reminders'"
-      (click)="setActive('reminders')">
+      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'reminders'" (click)="setActive('reminders')">
         <img src="images/reminder.png" class="sidenav-icon" alt="Reminders">
         <span class="sidenav-text">Reminders</span>
       </button>
 
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'edit'"
-      (click)="setActive('edit')">
+      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'edit'" (click)="setActive('edit')">
         <img src="images/edit.png" class="sidenav-icon" alt="Edit Labels">
         <span class="sidenav-text">Edit labels</span>
       </button>
 
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'archive'"
-      (click)="setActive('archive')">
+      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'archive'" (click)="setActive('archive')">
         <img src="images/archive.png" class="sidenav-icon" alt="Archive">
         <span class="sidenav-text">Archive</span>
       </button>
 
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'trash'"
-      (click)="setActive('trash')">
+      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'trash'" (click)="setActive('trash')">
         <img src="images/delete.png" class="sidenav-icon" alt="Trash">
         <span class="sidenav-text">Trash</span>
       </button>
     </mat-sidenav>
-   
+
     <mat-sidenav-content class="main-content">
-    <div class="content-wrapper">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-

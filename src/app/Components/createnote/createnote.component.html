@@ -19,7 +19,7 @@
         <textarea placeholder="Description" class="description" formControlName="description"></textarea>
           
         <div class="noteActions">
-          <app-icons></app-icons>
+          <app-icons (noteAdded)="onNoteColorSelected($event)"></app-icons>
           <div>
             <button mat-button class="closebutton" (click)="onSubmit()">Close</button>
           </div>

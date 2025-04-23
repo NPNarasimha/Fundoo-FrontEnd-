@@ -18,7 +18,12 @@ export class DashboardComponent {
     this.isSidenavOpen = !this.isSidenavOpen;
   }
 
-  
+  logout() 
+  {
+    localStorage.removeItem('Token'); 
+    console.log('User logged out !!!!'); 
+    this.router.navigate(['']); 
+  } 
   setActive(item: string) {
     this.selectedItem = item;
     if(item==='notes'){

@@ -21,7 +21,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
 import { CreatenoteComponent } from './Components/createnote/createnote.component';
 import { IconsComponent } from './Components/icons/icons.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +47,7 @@ import { IconsComponent } from './Components/icons/icons.component';
     MatSnackBarModule,
     MatToolbarModule,
     MatSidenavModule,
-    
+    MatMenuModule,
     
   ],
   providers: [
