@@ -30,4 +30,11 @@ export class HttpService{
   deleteApi(endpoint:string ,headers: HttpHeaders =new HttpHeaders()){
     return this.http.delete(this.BASE_URL+endpoint,{headers})
   }
+  
+  getHeaderToken() {
+    const token = localStorage.getItem('Token');
+    return new HttpHeaders({
+      Authorization: token?.startsWith('Bearer ') ? token : `Bearer ${token}`
+    });
+  }
 }

@@ -21,8 +21,10 @@ export class DashboardComponent {
   
   setActive(item: string) {
     this.selectedItem = item;
+    if(item==='notes'){
     this.router.navigate(['/dashboard/createnote']); 
-    // if (item === 'reminders') {
+    }
+    // else if (item === 'reminders') {
     //   this.router.navigate(['/dashboard/reminders']); 
     // }
     // else if (item === 'edit') {

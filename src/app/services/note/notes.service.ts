@@ -5,9 +5,12 @@ import { HttpService } from '../http-service/http.service';
   providedIn: 'root'
 })
 export class NotesService {
-
-  constructor(private Http : HttpService) { }
+token:any
+  constructor(private Http : HttpService) {
+    this.token=this.Http.getHeader();
+   }
   createNotes(payload:any){
-    return this.Http.postApi("/addnotes",payload)
+    const headers = this.Http.getHeaderToken();
+    return this.Http.postApi("/addnotes",payload,headers);
   }
 }

@@ -1,49 +1,73 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from '../../services/note/notes.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-createnote',
   standalone: false,
   templateUrl: './createnote.component.html',
-  styleUrl: './createnote.component.scss'
+  styleUrls: ['./createnote.component.scss']
 })
 export class CreatenoteComponent implements OnInit {
-
   notesForm!: FormGroup;
-  noteshow: boolean = false; // To toggle between collapsed and expanded note
+  noteshow: boolean = false;
+  submitted = false;
+  token:any;
 
-  constructor(private fb: FormBuilder) {}
-
+  constructor(
+    private formbuilder: FormBuilder,
+    private note: NotesService,
+    private snackBar: MatSnackBar,
+    private activeRoute:ActivatedRoute
+  ) {
+    this.token = localStorage.getItem('Token');
+  }
   ngOnInit(): void {
-    this.notesForm = this.fb.group({
-      title: [''],
-      description: ['']
+    this.notesForm = this.formbuilder.group({
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(5)]],
+      color:'#ffffff',
+      isPin:false 
     });
   }
-
-  // Triggered when clicking the collapsed note input
+  toggleForm(event?: MouseEvent) {
+    this.noteshow= true;
+    event?.stopPropagation(); 
+  }
   opennote(): void {
     this.noteshow = true;
   }
 
-  // Close note input without saving
-  closeNote(): void {
-    this.noteshow = false;
-    this.notesForm.reset();
-  }
-
-  // On form submission
   onSubmit(): void {
+    this.submitted=true;
+    console.log('Form Values:', this.notesForm.value);
     if (this.notesForm.valid) {
-      const noteData = this.notesForm.value;
-      console.log('Note Submitted:', noteData);
+      const noteData = {
+        Title: this.notesForm.value.title,
+        Description: this.notesForm.value.description,
+        Color: this.notesForm.value.color,
+        isPin: this.notesForm.value.isPin
+      };
+      console.log(noteData);
+      this.note.createNotes(noteData).subscribe({
+        next: (result: any) => {
+          console.log(result.message);
+          this.snackBar.open('Notes created successfully!', 'Close', { duration: 3000 });
+          this.notesForm.reset();
+          this.noteshow = false;
+        },
+        error: (err) => {
+          console.error('Error from API:', err);
+          this.snackBar.open('Note creation failed. Please try again.', 'Close', { duration: 3000 });
+        }
+      });
 
-      // You can send noteData to a service or API here
-
-      this.notesForm.reset();
+    } else {
       this.noteshow = false;
+      this.notesForm.reset();
+      this.snackBar.open('Please fill all fields correctly.', 'Close', { duration: 3000 });
     }
   }
 }

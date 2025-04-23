@@ -1,0 +1,36 @@
+.icon-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.icons{
+    height: 25px;
+  width: 25px;
+  margin-left: 10px;
+}
+.icon{
+    height: 25px;
+  width: 25px;
+  margin-left: 10px;
+ 
+}
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  
+    &:hover {
+      background-color: rgba(95, 99, 104, 0.15);
+    }
+  
+    img {
+      height: 25px;
+      width: 25px;
+      filter: brightness(0);
+    }
+  }
+  

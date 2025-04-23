@@ -48,6 +48,7 @@ import { IconsComponent } from './Components/icons/icons.component';
     MatToolbarModule,
     MatSidenavModule,
     
+    
   ],
   providers: [
     provideClientHydration(withEventReplay()),
