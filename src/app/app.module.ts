@@ -12,7 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'; 
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
@@ -22,6 +22,13 @@ import { ForgetPasswordComponent } from './Components/forget-password/forget-pas
 import { CreatenoteComponent } from './Components/createnote/createnote.component';
 import { IconsComponent } from './Components/icons/icons.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { DisplaynotesComponent } from './Components/displaynotes/displaynotes.component';
+import { DisplayAllNotesComponent } from './Components/display-all-notes/display-all-notes.component';
+import { ArchiveComponent } from './Components/archive/archive.component';
+import { TrashComponent } from './Components/trash/trash.component';
+import { MatDialogModule } from '@angular/material/dialog'; 
+import { FormsModule } from '@angular/forms';
+import { UpdateNoteComponent } from './Components/update-note/update-note.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +37,12 @@ import { MatMenuModule } from '@angular/material/menu';
     DashboardComponent,
     ForgetPasswordComponent,
     CreatenoteComponent,
-    IconsComponent
+    IconsComponent,
+    DisplaynotesComponent,
+    DisplayAllNotesComponent,
+    ArchiveComponent,
+    TrashComponent,
+    UpdateNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +60,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatToolbarModule,
     MatSidenavModule,
     MatMenuModule,
+    MatDialogModule,
+    FormsModule
     
   ],
   providers: [

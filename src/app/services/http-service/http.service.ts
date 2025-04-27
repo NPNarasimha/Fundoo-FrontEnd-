@@ -34,7 +34,7 @@ export class HttpService{
   getHeaderToken() {
     const token = localStorage.getItem('Token');
     return new HttpHeaders({
-      Authorization: token?.startsWith('Bearer ') ? token : `Bearer ${token}`
+     Authorization: token?.startsWith('Bearer ') ? token : `Bearer ${token}`
     });
   }
 }

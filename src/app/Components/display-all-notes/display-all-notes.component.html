@@ -1,0 +1,4 @@
+<app-createnote (messageCreateToDisplay)="receiveMessagefromdisplaycard($event)"></app-createnote>
+<div>
+    <app-displaynotes [NotesList]="notesArray" (displaytogetallnotes)="receiveMessagefromdisplaycard($event)" ></app-displaynotes>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from '../../services/note/notes.service';
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CreatenoteComponent implements OnInit {
   notesForm!: FormGroup;
   noteshow: boolean = false;
-  submitted = false;
+  submitted = true;
   token:any;
 
   constructor(
@@ -30,8 +30,11 @@ export class CreatenoteComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(5)]],
       color:'#ffffff',
       isPin:false 
+      ,isArchive:false
     });
   }
+  @Output() messageCreateToDisplay = new EventEmitter<string>();
+  
   toggleForm(event?: MouseEvent) {
     this.noteshow= true;
     event?.stopPropagation(); 
@@ -51,14 +54,16 @@ onNoteColorSelected(event: { color: string }): void {
         Title: this.notesForm.value.title,
         Description: this.notesForm.value.description,
         Color: this.notesForm.value.color,
-        isPin: this.notesForm.value.isPin
+        isPin: this.notesForm.value.isPin,
+        isArchive:this.notesForm.value.isArchive
       };
       console.log(noteData);
       this.note.createNotes(noteData).subscribe({
         next: (result: any) => {
           console.log(result.message);
+          this.messageCreateToDisplay.emit(result);
           this.snackBar.open('Notes created successfully!', 'Close', { duration: 3000 });
-          this.notesForm.reset({ color: '#ffffff', isPin: false });
+          this.notesForm.reset({ color: '#ffffff', isPin: false,isArchive:false});
           this.noteshow = false;
         },
         error: (err) => {
@@ -69,7 +74,7 @@ onNoteColorSelected(event: { color: string }): void {
 
     } else {
       this.noteshow = false;
-      this.notesForm.reset({ color: '#ffffff', isPin: false });
+      this.notesForm.reset({ color: '#ffffff', isPin: false ,isArchive:false});
       this.snackBar.open('Please fill all fields correctly.', 'Close', { duration: 3000 });
     }
   }

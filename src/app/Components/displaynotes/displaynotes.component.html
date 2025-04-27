@@ -1,0 +1,28 @@
+<div class="notes-wrapper">
+    <div class="notes-container">
+      <div
+        class="note-card"
+        *ngFor="let notes of NotesList "
+        [style.background-color]="notes.color"
+      >
+        <div class="note-content" (click)="opendialogue(notes)">
+          <a href="#" class="pin-icon">
+            <img src="images/pin.png" alt="Pin" />
+          </a>
+          <div class="note-description">
+            <p>{{ notes.title }}</p>
+            <p>{{ notes.description }}</p>
+          </div>
+        </div>
+  
+        <app-icons
+          [notesCard]="notes"
+          class="icons"
+          (iconstodisplay)="recievefromiconstodisplaycard($event)"
+        ></app-icons> 
+        
+      </div>
+  
+    </div>
+  </div>
+  

@@ -1,0 +1,64 @@
+.notes-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    max-width: 1200px;
+  }
+  
+  .note-card {
+    width: 240px;
+    min-height: 120px;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .note-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  .note-content {
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .pin-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+   
+  }
+  
+  .pin-icon img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .note-description {
+    margin-top: 32px;
+  }
+  
+  .note-description p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .note-description p:last-child {
+    font-size: 14px;
+    color: #555;
+  }
+  

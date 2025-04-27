@@ -4,15 +4,9 @@
     justify-content: space-between;
 }
 .icons{
-    height: 25px;
-  width: 25px;
-  margin-left: 10px;
-}
-.icon{
-    height: 25px;
-  width: 25px;
-  margin-left: 10px;
- 
+  height: 10px;
+  width: 10px;
+  margin-right: 3px;
 }
 button {
     background: transparent;
@@ -30,7 +24,7 @@ button {
     img {
       height: 25px;
       width: 25px;
-      filter: brightness(0);
+      filter: brightness(0.8);
     }
   }
   .color-picker {

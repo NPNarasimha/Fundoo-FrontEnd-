@@ -1,0 +1,25 @@
+<div class="dialog-container">
+    <div class="takeAnote">
+        <div class="titleInputSection">
+            <input matInput [(ngModel)]="title" value="{{title}}"  class="titleInput">
+            <p></p>
+        </div>
+        <div class="noteContent">
+            <div>
+                <textarea matInput [(ngModel)]="description" value="{{description}}" placeholder="description" class="noteDescription"></textarea>
+            </div>
+            <div class="noteActions">
+                <app-icons></app-icons>
+                 <button>
+                  <img src="images/undo.png" alt="undo" class="icon">
+              </button>
+              <button>
+                  <img src="images/redo.png" alt="redo-img" class="icon">
+              </button>
+                <div>
+                  <button mat-button class="closebutton" (click)="onSubmit()">Close</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
