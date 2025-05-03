@@ -1,41 +1,59 @@
-
 <div class="icon-container">
-    <div>
-        
-        <button mat-icon-button (click)="toggleColorPicker($event)">
-            <img src="images/pallete.png" alt="add_alert" class="icons">
-          </button>
-          <div *ngIf="isColorPickerVisible" class="color-picker">
-            <div
-              class="color-circle"
-              *ngFor="let color of colors"
-              [ngStyle]="{ 'background-color': color }"
-              (click)="selectColor(color)">
-            </div>
-          </div>
-        <button>
-            <img src="images/add_alert.png" alt="add_alert" class="icons">
+    <div *ngIf="view !== 'trash'; else trashIcons">
+     
+      <button mat-icon-button (click)="toggleColorPicker($event)">
+        <img src="images/pallete.png" alt="Color" class="icons" />
+      </button>
+  
+     
+      <div *ngIf="isColorPickerVisible" class="color-picker" (click)="$event.stopPropagation()">
+        <div
+          class="color-circle"
+          *ngFor="let color of colors"
+          [ngStyle]="{'background-color': color}"
+          (click)="selectColor(color, $event)"
+        ></div>
+      </div>      
+      <button mat-icon-button (click)="openReminderDialog($event, notesCard)">
+        <img src="images/add_alert.png" alt="Reminder" class="icons" />
+      </button>
+      
+      <button mat-icon-button (click)="openCollaboratorsDialog($event, notesCard)">
+        <img src="images/colabrator.png" alt="Collaborator" class="icons" />
+      </button>
+
+      <button mat-icon-button>
+        <img src="images/img_frame.png" alt="Image" class="icons" />
+      </button>
+  
+     
+      <button mat-icon-button (click)="toArchive($event)">
+        <img src="images/archive.png" alt="Archive" class="icons" />
+      </button>
+  
+     
+      <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+        <img src="images/more_vert.png" alt="More" class="icons" />
+      </button>
+      <mat-menu #menu>
+        <button mat-menu-item (click)="trash($event)">Trash note</button>
+        <button mat-menu-item (click)="openAddLabelDialog($event)">Add Label</button>
+        <button mat-icon-button (click)="deleteNotePermanently($event)">
+          <mat-icon>delete_forever</mat-icon>
         </button>
-        <button>
-            <img src="images/colabrator.png" alt="colabrator" class="icons">
+        <button mat-icon-button (click)="restoreNote($event)">
+          <mat-icon>restore_from_trash</mat-icon>
         </button>
-        <button>
-            <img src="images/img_frame.png" alt="img_frame" class="icons">
-        </button>
-        <button (click)="toArchive()">
-            <img src="images/archive.png" alt="archive" class="icons">
-        </button>
-        <button [matMenuTriggerFor]="menu">
-            <img src="images/more_vert.png" alt="more_vert" class="icons">
-        </button>
-        <mat-menu #menu>
-            <button mat-menu-item (click)="trash()">Delete note</button>
-            <button mat-menu-item>Add label</button>
-            <button mat-menu-item>Add drawing</button>
-            <button mat-menu-item>Make a copy</button>
-            <button mat-menu-item>Show checkboxes</button>
-            <button mat-menu-item>copy to Google doc</button>
-            <button mat-menu-item>varsion history</button>
-          </mat-menu>
+      </mat-menu>
     </div>
-</div>    
+  
+    <ng-template #trashIcons>
+      <button mat-icon-button (click)="restoreNote($event)">
+        <mat-icon>restore_from_trash</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteNotePermanently($event)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </ng-template>
+  </div>
+  

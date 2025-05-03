@@ -1,0 +1,118 @@
+.collaborator-email{
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 18px;
+  margin-bottom: 30px;
+
+}
+mat-dialog-container {
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.collaborator-chip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+mat-chip.collaborator-chip-item {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 16px;
+  gap: 8px;
+}
+
+.collaborator-chip .remove-collaborator {
+  color: #7b2726;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.collaborator-chip .remove-collaborator:hover {
+  color: #5b1515;
+}
+
+.input-done-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+mat-form-field.no-border .mat-form-field-outline,
+mat-form-field.no-border .mat-form-field-outline-thick {
+  display: none;
+}
+mat-form-field.no-border .mat-form-field-wrapper {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+mat-form-field.full-width {
+  flex: 1;
+}
+
+mat-label {
+  font-size: 16px;
+  color: #5f6368;
+}
+
+input.mat-input-element {
+  font-size: 15px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+@media (max-width: 768px) {
+  mat-dialog-title {
+    font-size: 20px;
+  }
+
+  mat-chip.custom-chip {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .input-done-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  mat-dialog-container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  mat-dialog-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  mat-dialog-actions {
+    justify-content: center;
+  }
+
+  .input-done-wrapper {
+    flex-direction: column;
+  }
+
+  button[mat-icon-button] {
+    align-self: flex-end;
+  }
+}

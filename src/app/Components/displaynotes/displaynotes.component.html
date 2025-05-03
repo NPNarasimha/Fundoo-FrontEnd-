@@ -1,11 +1,14 @@
+<!-- <div [ngClass]="isListView ? 'notes-list' : 'notes-grid'"> -->
 <div class="notes-wrapper">
-    <div class="notes-container">
+    <div class="notes-container" [ngClass]="isListView ? 'note-list' : 'note-grid'">
       <div
         class="note-card"
-        *ngFor="let notes of NotesList "
-        [style.background-color]="notes.color"
+        *ngFor="let notes of NotesList " 
+        [ngStyle]="{'background-color': notes.color || 'transparent'}"
+        
+        (click)="opendialogue(notes)"
       >
-        <div class="note-content" (click)="opendialogue(notes)">
+        <div class="note-content" >
           <a href="#" class="pin-icon">
             <img src="images/pin.png" alt="Pin" />
           </a>
@@ -13,11 +16,15 @@
             <p>{{ notes.title }}</p>
             <p>{{ notes.description }}</p>
           </div>
+          <div *ngIf="notes.reminder"class="reminder-chip">
+            <mat-icon class="reminder-icon">notifications</mat-icon>
+            {{ notes.reminder | date: 'short' }}
+          </div>
         </div>
-  
         <app-icons
           [notesCard]="notes"
           class="icons"
+          [view]="selectedItem"
           (iconstodisplay)="recievefromiconstodisplaycard($event)"
         ></app-icons> 
         
@@ -25,4 +32,5 @@
   
     </div>
   </div>
+
   

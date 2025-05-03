@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NotesService } from '../../services/note/notes.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { NotesService } from '../../services/note/notes.service';
 export class DisplayAllNotesComponent  {
   notesArray = [];
   constructor(private notes:NotesService){}
+  @Input() isListView: boolean = false;
   ngOnInit(): void {
     this.getAllNotes();
     console.log("called");
@@ -21,14 +22,16 @@ export class DisplayAllNotesComponent  {
       this.notesArray = request.data;
       console.log(this.notesArray);
       this.notesArray.reverse();
-      this.notesArray = this.notesArray.filter((notedata: any) => {
-        return !notedata.isTrash && !notedata.isArchive;
+        this.notesArray = this.notesArray.filter((notedata: any) => {
+          return !notedata.isTrash && !notedata.isArchive && notedata.reminder;        
       });
     });
     console.log(this.notesArray);
   }
   receiveMessagefromdisplaycard($event: any) {
     console.log('insidegetallnotes', $event);
-    this.getAllNotes();
+  if ($event === 'refresh') {
+    this.getAllNotes();  
+  }
   }
 }

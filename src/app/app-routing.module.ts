@@ -10,6 +10,10 @@ import { DisplayAllNotesComponent } from './Components/display-all-notes/display
 import { ArchiveComponent } from './Components/archive/archive.component';
 import { TrashComponent } from './Components/trash/trash.component';
 import { UpdateNoteComponent } from './Components/update-note/update-note.component';
+import { CollaboratorComponent } from './Components/collaborator/collaborator.component';
+import { ReminderComponent } from './Components/reminder/reminder.component';
+import { CreatelabelComponent } from './Components/createlabel/createlabel.component';
+import { RemindernotesComponent } from './Components/remindernotes/remindernotes.component';
 
 const routes: Routes = [
   {path:"",component:LoginComponent}
@@ -20,7 +24,10 @@ const routes: Routes = [
       {path:"",component:DisplayAllNotesComponent},//this is createnote and display all note component
       {path:"archive",component:ArchiveComponent},
       {path:"trash",component:TrashComponent},
-      {path:"update",component:UpdateNoteComponent}
+      {path:"update",component:UpdateNoteComponent},
+      {path:"collabrator",component:CollaboratorComponent},
+      {path:"reminders",component:RemindernotesComponent},
+      {path:"label",component:CreatelabelComponent},
       ]}
 ];
 

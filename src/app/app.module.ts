@@ -29,6 +29,15 @@ import { TrashComponent } from './Components/trash/trash.component';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { FormsModule } from '@angular/forms';
 import { UpdateNoteComponent } from './Components/update-note/update-note.component';
+import { CollaboratorComponent } from './Components/collaborator/collaborator.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { ReminderComponent } from './Components/reminder/reminder.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CreatelabelComponent } from './Components/createlabel/createlabel.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RemindernotesComponent } from './Components/remindernotes/remindernotes.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +51,11 @@ import { UpdateNoteComponent } from './Components/update-note/update-note.compon
     DisplayAllNotesComponent,
     ArchiveComponent,
     TrashComponent,
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    CollaboratorComponent,
+    ReminderComponent,
+    CreatelabelComponent,
+    RemindernotesComponent
   ],
   imports: [
     BrowserModule,
@@ -61,8 +74,11 @@ import { UpdateNoteComponent } from './Components/update-note/update-note.compon
     MatSidenavModule,
     MatMenuModule,
     MatDialogModule,
-    FormsModule
-    
+    FormsModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),

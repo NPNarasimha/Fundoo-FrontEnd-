@@ -2,9 +2,24 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
+    margin-top: 20px;
   }
-  
+  .note-grid 
+{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.note-list 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
   .notes-container {
     display: flex;
     flex-wrap: wrap;
@@ -61,4 +76,57 @@
     font-size: 14px;
     color: #555;
   }
-  
+  .reminder-icon {
+    margin-right: 3px; 
+    font-size: 20px; 
+    
+  }
+  .reminder-chip {
+    display: flex;
+    align-items: center; 
+    background-color: #ffffff; 
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    width: auto; 
+  }
+.notes-grid 
+{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+.notes-list 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+@media (max-width: 1200px) 
+{
+  .notes-grid 
+  {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) 
+{
+  .notes-grid 
+  {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) 
+{
+  .notes-grid 
+  {
+    grid-template-columns: 1fr;
+  }
+}
+

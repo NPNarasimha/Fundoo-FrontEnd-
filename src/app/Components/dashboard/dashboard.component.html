@@ -4,26 +4,37 @@
       <button mat-icon-button (click)="toggleSidenav()" aria-label="menu icon">
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="images/keep_image.png" alt="keep image" class="keep-img">
-      <span class="keep-text">Keep</span>
+      <div *ngIf="currentRoute === '/dashboard'">
+        <img src="images/keep_image.png" alt="keep image" class="keep-img">
+        <span class="keep-text">Keep</span>
+      </div>
+
+      <div *ngIf="currentRoute !== '/dashboard'" class="page-title">
+        <span>{{ getPageTitle(currentRoute) }}</span>
+      </div>
     </div>
 
-    <div class="toolbar-center">
-      <mat-form-field appearance="outline">
-        <img matPrefix src="images/search_bar.png" class="search-img" alt="Search">
-        <input matInput placeholder="Search">
-      </mat-form-field>
+    <div class="search-container">
+      <mat-icon>search</mat-icon>
+      <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery"
+        (input)="onSearchChange()" />
+      <mat-icon class="close-icon" (click)="clearSearch()">close</mat-icon>
     </div>
 
     <img src="images/search_bar.png" class="search-icon" alt="Search">
 
     <div class="toolbar-actions-container">
       <div class="toolbar-actions">
-        <button mat-icon-button>
-          <img src="images/refresh.png" class="icon" alt="Refresh">
+        <button mat-icon-button (click)="refreshPage()" [disabled]="isLoading" matTooltip="Refresh">
+          <ng-container *ngIf="!isLoading; else spinnerTemplate">
+            <mat-icon>refresh</mat-icon>
+          </ng-container>
+          <ng-template #spinnerTemplate>
+            <mat-spinner diameter="24" strokeWidth="3"></mat-spinner>
+          </ng-template>
         </button>
-        <button mat-icon-button>
-          <img src="images/View.png" class="icon" alt="View Agenda">
+        <button mat-icon-button (click)="toggleView()" matTooltip="{{ isListView ? 'Grid View' : 'List View' }}">
+          <mat-icon>{{ isListView ? 'grid_view' : 'view_agenda' }}</mat-icon>
         </button>
         <button mat-icon-button>
           <img src="images/settings.png" class="icon" alt="Settings">
@@ -41,7 +52,7 @@
     </div>
   </mat-toolbar>
 
-  
+
   <mat-menu #actMenu="matMenu">
     <button mat-menu-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
@@ -50,28 +61,32 @@
   </mat-menu>
 
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-      [class.open]="isSidenavOpen"
-      class="sidenav"
-      mode="side"
-      [opened]="true">
-      <!-- Sidenav buttons... -->
+    <mat-sidenav [class.open]="isSidenavOpen" class="sidenav" mode="side" [opened]="true">
       <button mat-button class="sidenav-item" [class.active]="selectedItem === 'notes'" (click)="setActive('notes')">
         <img src="images/lightbulb.png" class="sidenav-icon" alt="Notes">
         <span class="sidenav-text">Notes</span>
       </button>
+      <!-- <p *ngIf="labels.length === 0">No labels loaded</p> -->
+      <div *ngFor="let label of labels">
+        <button mat-button class="sidenav-item">
+          <img src="images/label.png" class="sidenav-icon" alt="Label">
+          <span class="sidenav-text">{{ label }}</span>
+        </button>
+      </div>
 
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'reminders'" (click)="setActive('reminders')">
+      <button mat-button class="sidenav-item" [ngClass]="{ 'active': activeItem === 'reminders' }"
+        (click)="setActive('reminders')">
         <img src="images/reminder.png" class="sidenav-icon" alt="Reminders">
         <span class="sidenav-text">Reminders</span>
       </button>
 
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'edit'" (click)="setActive('edit')">
+      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'edit'" (click)="openLabelDialog()">
         <img src="images/edit.png" class="sidenav-icon" alt="Edit Labels">
         <span class="sidenav-text">Edit labels</span>
       </button>
 
-      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'archive'" (click)="setActive('archive')">
+      <button mat-button class="sidenav-item" [class.active]="selectedItem === 'archive'"
+        (click)="setActive('archive')">
         <img src="images/archive.png" class="sidenav-icon" alt="Archive">
         <span class="sidenav-text">Archive</span>
       </button>

@@ -1,0 +1,85 @@
+
+mat-dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .create-label-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    color: #5f6368;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    mat-icon {
+      font-size: 24px;
+      color: #5f6368;
+    }
+  
+    &:hover {
+      background-color: #f1f3f4;
+      border-radius: 8px;
+    }
+  }
+  
+  .label-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+  
+    .full-width {
+      flex: 1;
+    }
+  }
+  
+  .label-list {
+    margin-top: 20px;
+  
+    h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      .label-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+  
+        .label-content {
+          flex: 1;
+          font-size: 15px;
+          color: #333;
+          cursor: default;
+        }
+  
+        mat-icon {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  
+  mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+  }
+  
